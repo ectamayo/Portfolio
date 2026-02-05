@@ -30,7 +30,6 @@
             text-transform: uppercase;
         }
 
-        /* Swiss Design Grid Background */
         .swiss-grid {
             background-image: 
                 linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
@@ -38,7 +37,6 @@
             background-size: 40px 40px;
         }
 
-        /* Neo-Brutalism Style */
         .neo-brutalism {
             background: white;
             border: var(--border-width) solid var(--dark);
@@ -51,7 +49,6 @@
             box-shadow: 10px 10px 0px var(--electric-blue);
         }
 
-        /* Y2K Marquee Animation */
         .marquee {
             white-space: nowrap;
             overflow: hidden;
@@ -97,27 +94,51 @@
             text-orientation: mixed;
         }
 
-        /* Smooth scroll for navigation */
         html {
             scroll-behavior: smooth;
+        }
+
+        .hero-img {
+            object-position: center top;
+        }
+
+        .project-card img {
+            filter: grayscale(1);
+            transition: all 0.5s ease;
+        }
+
+        .project-card:hover img {
+            filter: grayscale(0);
+            transform: scale(1.05);
+        }
+
+        /* Ajuste para el embed de Canva */
+        .canva-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-top: 56.25%;
+            overflow: hidden;
+            will-change: transform;
         }
     </style>
 </head>
 <body class="swiss-grid">
 
-    <!-- Navegación con Efecto Mix-Blend -->
+    <!-- Navegación -->
     <nav class="fixed w-full z-50 mix-blend-difference text-white py-6 px-6 md:px-10 flex justify-between items-center">
         <div class="text-xl md:text-2xl font-black tracking-tighter">ECT // 2026</div>
         <div class="space-x-6 md:space-x-10 text-xs font-bold uppercase tracking-tighter flex">
-            <a href="#perfil" class="hover:text-acid-green transition">Profile</a>
-            <a href="#proyectos" class="hover:text-acid-green transition">Work</a>
-            <a href="#contacto" class="hover:text-acid-green transition">Contact</a>
+            <a href="#perfil" class="hover:text-acid-green transition">Perfil</a>
+            <a href="#proyectos" class="hover:text-acid-green transition">Proyectos</a>
+            <a href="#diseno" class="hover:text-acid-green transition">Diseño</a>
+            <a href="#contacto" class="hover:text-acid-green transition">Contacto</a>
         </div>
     </nav>
 
-    <!-- Sidebar Estilo Suizo (Solo Desktop) -->
+    <!-- Sidebar Estilo Suizo -->
     <div class="fixed left-0 top-0 h-full w-12 border-r border-black hidden lg:flex items-center justify-center bg-white/50 backdrop-blur-sm">
-        <span class="sidebar-text uppercase font-black text-[10px] tracking-[0.3em] opacity-40">INNOVATION · PRODUCT · STRATEGY</span>
+        <span class="sidebar-text uppercase font-black text-[10px] tracking-[0.3em] opacity-40">INNOVACIÓN · PRODUCTO · ESTRATEGIA</span>
     </div>
 
     <!-- Hero Section -->
@@ -126,25 +147,25 @@
         
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div class="lg:col-span-8 order-2 lg:order-1">
-                <div class="y2k-badge mb-6 w-fit">STATUS: ACTIVE_2026</div>
+                <div class="y2k-badge mb-6 w-fit">ESTADO: ACTIVO_2026</div>
                 <h1 class="text-5xl md:text-8xl lg:text-9xl font-black leading-[0.9] mb-6 tracking-tighter">
                     EDILBERTO <br> <span class="text-white" style="-webkit-text-stroke: 1.5px black; text-stroke: 1.5px black;">CARMONA</span>
                 </h1>
                 <div class="flex flex-wrap gap-3 mt-10">
                     <span class="neo-brutalism px-5 py-2 font-bold bg-white italic uppercase text-sm">Periodista Digital</span>
-                    <span class="neo-brutalism px-5 py-2 font-bold bg-[#d4ff00] uppercase text-sm tracking-tighter">Estratega IA</span>
-                    <span class="neo-brutalism px-5 py-2 font-bold bg-white uppercase text-sm">Product Owner</span>
+                    <span class="neo-brutalism px-5 py-2 font-bold bg-[#d4ff00] uppercase text-sm tracking-tighter">Estrategia e Innovación</span>
+                    <span class="neo-brutalism px-5 py-2 font-bold bg-white uppercase text-sm">Desarrollo de productos</span>
+                    <span class="neo-brutalism px-5 py-2 font-bold bg-white uppercase text-sm">Diseño y edición</span>
                 </div>
             </div>
             
             <div class="lg:col-span-4 order-1 lg:order-2 relative flex justify-center">
                 <div class="neo-brutalism p-2 w-64 h-64 md:w-80 md:h-80 bg-white -rotate-2 group overflow-hidden">
-                    <!--  -->
-                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1000&auto=format&fit=crop" 
-                         alt="Edilberto Carmona" 
-                         class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out scale-110 group-hover:scale-100">
+                    <img src="https://lh3.googleusercontent.com/d/1LY6XXHlkDWc95rB77F9-yEb9c8kn-h0Z" 
+                         onerror="this.src='https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1000&auto=format&fit=crop'"
+                         alt="Edilberto Carmona Tamayo" 
+                         class="hero-img w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out scale-110 group-hover:scale-100">
                 </div>
-                <!-- Elemento Geométrico Y2K -->
                 <div class="absolute -bottom-4 -right-4 w-16 h-16 bg-blue-600 neo-brutalism flex items-center justify-center rotate-12">
                     <i class="fas fa-bolt text-white text-2xl"></i>
                 </div>
@@ -152,24 +173,192 @@
         </div>
     </section>
 
-    <!-- Marquee Continuo -->
+    <!-- Marquee -->
     <div class="marquee">
         <div class="marquee-content font-black text-2xl uppercase italic">
             &nbsp; ESTRATEGIA DIGITAL + INNOVACIÓN + PRODUCTO WEB + INTELIGENCIA ARTIFICIAL + NARRATIVAS MULTIMEDIA + ESTRATEGIA DIGITAL + INNOVACIÓN + PRODUCTO WEB + INTELIGENCIA ARTIFICIAL + NARRATIVAS MULTIMEDIA +
         </div>
     </div>
 
+    <!-- Proyectos -->
+    <section id="proyectos" class="py-24 md:py-32 bg-white px-6 md:px-10 lg:px-32 border-t-2 border-black">
+        <h2 class="text-4xl md:text-5xl font-black mb-16 tracking-tighter uppercase">01. Proyectos <br>Seleccionados</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- CanalUSB -->
+            <a href="https://canalusb.cubadebate.cu/" target="_blank" class="project-card group block">
+                <div class="neo-brutalism overflow-hidden bg-white h-full flex flex-col">
+                    <div class="h-48 overflow-hidden border-b-2 border-black">
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop" alt="CanalUSB" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-xs font-black uppercase tracking-widest opacity-40">/01 TECNOLOGÍA</span>
+                                <i class="fas fa-external-link-alt"></i>
+                            </div>
+                            <h3 class="text-3xl font-black uppercase leading-none mb-4">CanalUSB</h3>
+                            <p class="text-sm text-slate-600 leading-tight">Plataforma especializada en tecnología, videojuegos y cultura digital.</p>
+                        </div>
+                        <div class="mt-6 flex flex-wrap gap-2">
+                            <span class="text-[10px] font-bold bg-black text-white px-2 py-1 uppercase">Tech News</span>
+                            <span class="text-[10px] font-bold bg-acid-green px-2 py-1 uppercase border border-black">Product Management</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Cubadebate Interactivos -->
+            <a href="http://interactivos.cubadebate.cu/" target="_blank" class="project-card group block">
+                <div class="neo-brutalism overflow-hidden bg-white h-full flex flex-col">
+                    <div class="h-48 overflow-hidden border-b-2 border-black">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" alt="Interactivos" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-xs font-black uppercase tracking-widest opacity-40">/02 DATA</span>
+                                <i class="fas fa-external-link-alt"></i>
+                            </div>
+                            <h3 class="text-3xl font-black uppercase leading-none mb-4">Interactivos</h3>
+                            <p class="text-sm text-slate-600 leading-tight">Laboratorio de narrativas visuales y visualización de datos.</p>
+                        </div>
+                        <div class="mt-6 flex flex-wrap gap-2">
+                            <span class="text-[10px] font-bold bg-black text-white px-2 py-1 uppercase">Data Viz</span>
+                            <span class="text-[10px] font-bold bg-blue-600 text-white px-2 py-1 uppercase">UX Design</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Cuba Joven -->
+            <a href="http://cubajoven.cubadebate.cu/" target="_blank" class="project-card group block">
+                <div class="neo-brutalism overflow-hidden bg-white h-full flex flex-col">
+                    <div class="h-48 overflow-hidden border-b-2 border-black">
+                        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=800&auto=format&fit=crop" alt="Cuba Joven" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-xs font-black uppercase tracking-widest opacity-40">/03 SOCIAL</span>
+                                <i class="fas fa-external-link-alt"></i>
+                            </div>
+                            <h3 class="text-3xl font-black uppercase leading-none mb-4">Cuba Joven</h3>
+                            <p class="text-sm text-slate-600 leading-tight">Espacio dedicado a las juventudes cubanas con lenguaje visual fresco.</p>
+                        </div>
+                        <div class="mt-6 flex flex-wrap gap-2">
+                            <span class="text-[10px] font-bold bg-black text-white px-2 py-1 uppercase">New Media</span>
+                            <span class="text-[10px] font-bold bg-[#d4ff00] px-2 py-1 uppercase border border-black">Strategy</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Cubadebate App -->
+            <a href="https://play.google.com/store/apps/details?id=cu.avangenio.cubadebate" target="_blank" class="project-card group block">
+                <div class="neo-brutalism overflow-hidden bg-white h-full flex flex-col">
+                    <div class="h-48 overflow-hidden border-b-2 border-black">
+                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=800&auto=format&fit=crop" alt="App Android" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-xs font-black uppercase tracking-widest opacity-40">/04 MOBILE</span>
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h3 class="text-3xl font-black uppercase leading-none mb-4">App Oficial</h3>
+                            <p class="text-sm text-slate-600 leading-tight">App optimizada para consumo de noticias en baja conectividad.</p>
+                        </div>
+                        <div class="mt-6 flex flex-wrap gap-2">
+                            <span class="text-[10px] font-bold bg-black text-white px-2 py-1 uppercase">Android</span>
+                            <span class="text-[10px] font-bold bg-blue-600 text-white px-2 py-1 uppercase">Product Owner</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Nueva Sección: Portafolio de Diseño (Canva) -->
+    <section id="diseno" class="py-24 md:py-32 px-6 md:px-10 lg:px-32 border-t-2 border-black bg-slate-50">
+        <div class="mb-16">
+            <h2 class="text-4xl md:text-5xl font-black tracking-tighter uppercase mb-4">02. Visual <br>Portfolio</h2>
+            <p class="text-lg font-bold italic text-blue-600">Explora mis trabajos de diseño gráfico y editorial</p>
+        </div>
+
+        <div class="neo-brutalism bg-white p-4 md:p-8">
+            <div class="canva-container neo-brutalism shadow-none">
+                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+                    src="https://www.canva.com/design/DAGK1ciVub8/zmV0KatkdtkRkVKh6MSlOg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+                </iframe>
+            </div>
+            <div class="mt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm font-black uppercase tracking-tighter italic">Portafolio Diseño Edilberto Carmona</p>
+                <a href="https://www.canva.com/design/DAGK1ciVub8/zmV0KatkdtkRkVKh6MSlOg/view?utm_content=DAGK1ciVub8&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" 
+                   target="_blank" 
+                   class="neo-brutalism px-6 py-2 bg-black text-white text-xs font-bold uppercase hover:bg-white hover:text-black transition">
+                   Ver en pantalla completa <i class="fas fa-expand ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Nueva Sección: Habilidades & Tecnologías -->
+    <section id="habilidades" class="py-24 md:py-32 bg-white px-6 md:px-10 lg:px-32 border-t-2 border-black">
+        <h2 class="text-4xl md:text-5xl font-black mb-16 tracking-tighter uppercase">03. Software <br>& Herramientas</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            <!-- Creatividad & Video -->
+            <div class="space-y-6">
+                <h3 class="text-xl font-black border-b-2 border-black pb-2 w-fit">CREATIVIDAD & VIDEO</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">Illustrator</span>
+                    <span class="skill-tag">Premiere</span>
+                    <span class="skill-tag">After Effects</span>
+                    <span class="skill-tag">Photoshop</span>
+                    <span class="skill-tag">InDesign</span>
+                    <span class="skill-tag">Audition</span>
+                    <span class="skill-tag">DaVinci Resolve</span>
+                </div>
+            </div>
+
+            <!-- Inteligencia Artificial -->
+            <div class="space-y-6">
+                <h3 class="text-xl font-black border-b-2 border-black pb-2 w-fit">INTELIGENCIA ARTIFICIAL</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag bg-acid-green">ChatGPT</span>
+                    <span class="skill-tag bg-acid-green">Claude</span>
+                    <span class="skill-tag bg-acid-green">Gemini</span>
+                    <span class="skill-tag bg-acid-green">Copilot</span>
+                    <span class="skill-tag bg-acid-green">DeepSeek</span>
+                    <span class="skill-tag bg-acid-green">Mistral</span>
+                    <span class="skill-tag bg-acid-green">Perplexity</span>
+                </div>
+            </div>
+
+            <!-- Digital & Product -->
+            <div class="space-y-6">
+                <h3 class="text-xl font-black border-b-2 border-black pb-2 w-fit">DIGITAL & PRODUCT</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">Figma</span>
+                    <span class="skill-tag">Canva</span>
+                    <span class="skill-tag">WordPress</span>
+                    <span class="skill-tag">Joomla</span>
+                    <span class="skill-tag">Medium</span>
+                    <span class="skill-tag">Substack</span>
+                    <span class="skill-tag">Mailchimp</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Perfil / Manifesto -->
-    <section id="perfil" class="py-24 md:py-32 px-6 md:px-10 lg:px-32">
+    <section id="perfil" class="py-24 md:py-32 px-6 md:px-10 lg:px-32 border-t-2 border-black">
         <div class="grid lg:grid-cols-2 gap-16 md:gap-20 items-start">
             <div>
-                <h2 class="text-4xl md:text-5xl font-black mb-10 tracking-tighter uppercase">01. <br>Manifesto</h2>
-                <p class="text-xl md:text-2xl leading-tight font-medium mb-8 text-slate-800">
-                    "Transformo entornos mediáticos complejos mediante la fusión de narrativa clásica y tecnología emergente."
-                </p>
-                <div class="w-20 h-2 bg-black mb-8"></div>
-                <p class="text-slate-600 text-lg leading-relaxed">
-                    Especializado en el liderazgo de equipos multidisciplinarios y la implementación de IA generativa para optimizar la producción editorial sin sacrificar la calidad periodística.
+                <h2 class="text-4xl md:text-5xl font-black mb-10 tracking-tighter uppercase">03. <br>Manifiesto</h2>
+                                  <p class="text-slate-600 text-lg leading-relaxed">
+                    Especializado en el liderazgo de equipos multidisciplinarios, creatividad y desarollo de productos web y multimedia.
                 </p>
             </div>
             
@@ -179,96 +368,17 @@
                     <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">Años Experiencia</span>
                 </div>
                 <div class="neo-brutalism p-8 bg-[#d4ff00]">
-                    <span class="text-4xl md:text-5xl font-black block mb-2">AI</span>
-                    <span class="text-[10px] font-black uppercase tracking-widest">Digital Strategy</span>
+                    <span class="text-4xl md:text-5xl font-black block mb-2">IA</span>
+                    <span class="text-[10px] font-black uppercase tracking-widest">Estrategia e innovación</span>
                 </div>
                 <div class="neo-brutalism p-8 bg-blue-600 text-white">
-                    <span class="text-4xl md:text-5xl font-black block mb-2">WEB</span>
-                    <span class="text-[10px] font-black uppercase tracking-widest">Product Dev</span>
+                    <span class="text-4xl md:text-5xl font-black block mb-2">WEB Y MULTIMEDIA </span>
+                    <span class="text-[10px] font-black uppercase tracking-widest">USO DE SOFTWARES</span>
                 </div>
                 <div class="neo-brutalism p-8 bg-white border-dashed">
-                    <span class="text-4xl md:text-5xl font-black block mb-2">CU</span>
-                    <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">Local Impact</span>
+                    <span class="text-4xl md:text-5xl font-black block mb-2">Cuba</span>
+                    <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">IMPACTO LOCAL</span>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Proyectos con Listado Tipográfico -->
-    <section id="proyectos" class="py-24 md:py-32 bg-white px-6 md:px-10 lg:px-32 border-t-2 border-black">
-        <h2 class="text-4xl md:text-5xl font-black mb-16 tracking-tighter uppercase">02. Selected <br>Work</h2>
-        
-        <div class="space-y-0">
-            <!-- Proyecto 1 -->
-            <div class="group border-t-2 border-black py-10 md:py-14 hover:bg-slate-50 transition-all cursor-pointer">
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-                    <div class="flex items-center gap-6 md:gap-12">
-                        <span class="text-sm font-black opacity-20 uppercase tracking-widest">/01</span>
-                        <h3 class="text-3xl md:text-6xl font-black group-hover:translate-x-4 transition-transform duration-500 uppercase">Cubadebate Reborn</h3>
-                    </div>
-                    <div class="flex gap-4 items-center self-end md:self-auto">
-                        <span class="text-[10px] font-bold uppercase bg-black text-white px-3 py-1 hidden sm:block">Product Design</span>
-                        <div class="w-12 h-12 md:w-16 md:h-16 rounded-full border-2 border-black flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all">
-                            <i class="fas fa-arrow-right -rotate-45 text-xl"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Proyecto 2 -->
-            <div class="group border-t-2 border-black py-10 md:py-14 hover:bg-slate-50 transition-all cursor-pointer">
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-                    <div class="flex items-center gap-6 md:gap-12">
-                        <span class="text-sm font-black opacity-20 uppercase tracking-widest">/02</span>
-                        <h3 class="text-3xl md:text-6xl font-black group-hover:translate-x-4 transition-transform duration-500 uppercase">AI Ecosystems</h3>
-                    </div>
-                    <div class="flex gap-4 items-center self-end md:self-auto">
-                        <span class="text-[10px] font-bold uppercase bg-black text-white px-3 py-1 hidden sm:block">Innovation</span>
-                        <div class="w-12 h-12 md:w-16 md:h-16 rounded-full border-2 border-black flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all">
-                            <i class="fas fa-arrow-right -rotate-45 text-xl"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Proyecto 3 -->
-            <div class="group border-t-2 border-b-2 border-black py-10 md:py-14 hover:bg-slate-50 transition-all cursor-pointer">
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-                    <div class="flex items-center gap-6 md:gap-12">
-                        <span class="text-sm font-black opacity-20 uppercase tracking-widest">/03</span>
-                        <h3 class="text-3xl md:text-6xl font-black group-hover:translate-x-4 transition-transform duration-500 uppercase">Multimedia Lab</h3>
-                    </div>
-                    <div class="flex gap-4 items-center self-end md:self-auto">
-                        <span class="text-[10px] font-bold uppercase bg-black text-white px-3 py-1 hidden sm:block">Creative Strategy</span>
-                        <div class="w-12 h-12 md:w-16 md:h-16 rounded-full border-2 border-black flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all">
-                            <i class="fas fa-arrow-right -rotate-45 text-xl"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stack / Competencias -->
-    <section class="py-24 md:py-32 px-6 md:px-10 lg:px-32 bg-slate-50 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-64 h-64 border-l-2 border-b-2 border-black/5 -z-0"></div>
-        <h2 class="text-4xl md:text-5xl font-black mb-16 tracking-tighter uppercase relative z-10">03. Stack & Tools</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
-            <div class="neo-brutalism p-8 bg-white flex flex-col justify-between h-64">
-                <div class="text-blue-600 text-4xl font-black"><i class="fas fa-shapes"></i></div>
-                <h4 class="font-black text-xl uppercase leading-none">Adobe <br>Creative <br>Suite</h4>
-            </div>
-            <div class="neo-brutalism p-8 bg-[#d4ff00] flex flex-col justify-between h-64">
-                <div class="text-black text-4xl font-black"><i class="fas fa-brain"></i></div>
-                <h4 class="font-black text-xl uppercase leading-none">AI / LLM <br>Strategic <br>Integration</h4>
-            </div>
-            <div class="neo-brutalism p-8 bg-blue-600 text-white flex flex-col justify-between h-64">
-                <div class="text-white text-4xl font-black"><i class="fas fa-code-branch"></i></div>
-                <h4 class="font-black text-xl uppercase leading-none">CMS <br>Architecture <br>& UX</h4>
-            </div>
-            <div class="neo-brutalism p-8 bg-white flex flex-col justify-between h-64">
-                <div class="text-black text-4xl font-black"><i class="fas fa-terminal"></i></div>
-                <h4 class="font-black text-xl uppercase leading-none">Digital <br>Content <br>Leadership</h4>
             </div>
         </div>
     </section>
@@ -277,47 +387,17 @@
     <footer id="contacto" class="bg-black text-white py-24 md:py-32 px-6 md:px-10 lg:px-32">
         <div class="grid lg:grid-cols-2 gap-20">
             <div>
-                <h2 class="text-6xl md:text-8xl font-black tracking-tighter mb-10 uppercase italic leading-none">Get in <br>Touch</h2>
+                <h2 class="text-6xl md:text-8xl font-black tracking-tighter mb-10 uppercase italic leading-none">Hablemos</h2>
                 <div class="space-y-4">
                     <p class="text-xl md:text-3xl font-light hover:text-acid-green transition cursor-pointer">ectamayo13@gmail.com</p>
                     <p class="text-xl md:text-3xl font-light hover:text-acid-green transition cursor-pointer">(+53) 58602761</p>
-                    <p class="text-lg opacity-40 mt-10">La Habana, Cuba.</p>
                 </div>
             </div>
-            
-            <div class="flex flex-col justify-between">
-                <div class="neo-brutalism p-8 bg-zinc-900 border-zinc-700 text-white shadow-none mb-12">
-                    <p class="text-xl italic font-medium leading-relaxed">
-                        "Enfocado en construir productos digitales con impacto social y excelencia técnica."
-                    </p>
-                </div>
-                <div class="flex gap-8">
-                    <a href="#" class="text-4xl hover:text-acid-green transition-transform hover:-translate-y-2"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="text-4xl hover:text-acid-green transition-transform hover:-translate-y-2"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="text-4xl hover:text-acid-green transition-transform hover:-translate-y-2"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="mt-24 pt-10 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-black uppercase tracking-[0.3em] text-zinc-500">
+                   <div class="mt-24 pt-10 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-black uppercase tracking-[0.3em] text-zinc-500">
             <span>Edilberto Carmona Tamayo © 2026</span>
-            <span class="text-zinc-700 hidden md:block">Swiss-Y2K System v2.0</span>
-            <a href="#inicio" class="hover:text-white transition">Back to Top ↑</a>
+            <a href="#inicio" class="hover:text-white transition">Volver Arriba ↑</a>
         </div>
     </footer>
 
-    <!-- Pixel Art Floating Element (Y2K Deco) -->
-    <div class="fixed bottom-6 left-6 z-40 hidden md:block">
-        <div class="w-10 h-10 bg-black flex items-center justify-center neo-brutalism p-0 shadow-sm">
-            <div class="grid grid-cols-2 gap-1">
-                <div class="w-2 h-2 bg-acid-green"></div>
-                <div class="w-2 h-2 bg-blue-600"></div>
-                <div class="w-2 h-2 bg-blue-600"></div>
-                <div class="w-2 h-2 bg-acid-green"></div>
-            </div>
-        </div>
-    </div>
-
 </body>
 </html>
-
