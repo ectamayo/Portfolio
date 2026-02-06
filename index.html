@@ -121,6 +121,92 @@
             overflow: hidden;
             will-change: transform;
         }
+
+        /* ========== ADICIONES PARA MEJORAR RESPONSIVE Y UTILIDADES ========== */
+
+        /* 1) Utilities para los colores definidos en :root (Tailwind no los genera automáticamente con la CDN) */
+        .text-acid-green { color: var(--acid-green); }
+        .bg-acid-green { background: var(--acid-green); }
+        .border-acid-green { border-color: var(--acid-green); }
+
+        /* Clases con ":" escapadas usadas en el HTML (p.ej. hover:text-acid-green) */
+        .hover\:text-acid-green:hover { color: var(--acid-green) !important; }
+        .hover\:bg-acid-green:hover { background: var(--acid-green) !important; }
+
+        /* 2) Badges para .skill-tag (estabas usando la clase pero no definida) */
+        .skill-tag {
+          display: inline-block;
+          background: #111827; /* color por defecto */
+          color: #fff;
+          padding: 6px 10px;
+          font-weight: 700;
+          font-size: 0.75rem;
+          border-radius: 6px;
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+        }
+        .skill-tag.bg-acid-green { background: var(--acid-green); color: #0a0a0a; }
+
+        /* 3) Mejorar legibilidad del nav en pantallas pequeñas */
+        nav {
+          background: rgba(10,10,10,0.7); /* hace el nav legible sobre imágenes */
+          backdrop-filter: blur(6px);
+        }
+        @media (min-width: 1024px) {
+          /* en pantallas grandes puedes mantener el mix-blend si lo deseas */
+          nav { background: transparent; mix-blend-mode: difference; }
+        }
+
+        /* 4) Limitar tamaño del "blob" y del hero para móviles */
+        @media (max-width: 640px) {
+          .blob { width: 220px; height: 220px; filter: blur(70px); opacity: 0.45; }
+          .hero-img { object-position: center top; }
+          h1 { font-size: 2.25rem; line-height: 1; } /* fallback para pantallas muy pequeñas */
+        }
+
+        /* 5) Evitar overflow de H1 y forzar quiebre de palabras largas */
+        h1, h1 span {
+          max-width: 100%;
+          overflow-wrap: break-word;
+          word-break: break-word;
+        }
+
+        /* 6) Marquee: duplicar contenido y ajustar animación para loop suave */
+        .marquee-content { display: inline-block; white-space: nowrap; }
+        .marquee-content .marquee-block { display: inline-block; padding-right: 4rem; }
+        .marquee-content { animation: marquee 22s linear infinite; }
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-100%); }
+        }
+
+        /* 7) Pequeños ajustes para project-card images en móvil */
+        .project-card img {
+          height: auto;
+          min-height: 220px;
+          object-fit: cover;
+        }
+
+        /* 8) Footer: enlaces táctiles grandes */
+        footer a[href^="mailto:"], footer a[href^="tel:"] {
+          text-decoration: none;
+          color: inherit;
+          display: inline-block;
+        }
+
+        /* 9) Revertir algunos transforms en pantallas pequeñas para evitar recortes */
+        @media (max-width: 768px) {
+          .group .hero-img { transform: none !important; scale: 1 !important; }
+          .neo-brutalism { box-shadow: 4px 4px 0px rgba(0,0,0,0.6); }
+        }
+
+        /* 10) Asegurar que elementos absolutos no generen overflow en pantallas pequeñas */
+        .blob { right: 2rem; top: 20vh; }
+        @media (max-width: 480px) {
+          .blob { right: 1rem; top: 18vh; opacity: 0.35; }
+        }
+
+        /* fin de adiciones */
     </style>
 </head>
 <body class="swiss-grid">
@@ -176,7 +262,8 @@
     <!-- Marquee -->
     <div class="marquee">
         <div class="marquee-content font-black text-2xl uppercase italic">
-            &nbsp; ESTRATEGIA DIGITAL + INNOVACIÓN + PRODUCTO WEB + INTELIGENCIA ARTIFICIAL + NARRATIVAS MULTIMEDIA + ESTRATEGIA DIGITAL + INNOVACIÓN + PRODUCTO WEB + INTELIGENCIA ARTIFICIAL + NARRATIVAS MULTIMEDIA +
+            <span class="marquee-block">&nbsp; ESTRATEGIA DIGITAL + INNOVACIÓN + PRODUCTO WEB + INTELIGENCIA ARTIFICIAL + NARRATIVAS MULTIMEDIA +</span>
+            <span class="marquee-block">&nbsp; ESTRATEGIA DIGITAL + INNOVACIÓN + PRODUCTO WEB + INTELIGENCIA ARTIFICIAL + NARRATIVAS MULTIMEDIA +</span>
         </div>
     </div>
 
@@ -389,8 +476,8 @@
             <div>
                 <h2 class="text-6xl md:text-8xl font-black tracking-tighter mb-10 uppercase italic leading-none">Hablemos</h2>
                 <div class="space-y-4">
-                    <p class="text-xl md:text-3xl font-light hover:text-acid-green transition cursor-pointer">ectamayo13@gmail.com</p>
-                    <p class="text-xl md:text-3xl font-light hover:text-acid-green transition cursor-pointer">(+53) 58602761</p>
+                    <p class="text-xl md:text-3xl font-light"><a href="mailto:ectamayo13@gmail.com" class="hover:text-acid-green transition">ectamayo13@gmail.com</a></p>
+                    <p class="text-xl md:text-3xl font-light"><a href="tel:+5358602761" class="hover:text-acid-green transition">(+53) 58602761</a></p>
                 </div>
             </div>
                    <div class="mt-24 pt-10 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-black uppercase tracking-[0.3em] text-zinc-500">
