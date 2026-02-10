@@ -66,7 +66,7 @@
 
         @keyframes marquee {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            100% { transform: translateX(-100%); }
         }
 
         .blob {
@@ -122,23 +122,22 @@
             will-change: transform;
         }
 
-        /* ========== ADICIONES PARA MEJORAR RESPONSIVE Y UTILIDADES ========== */
+        /* ========== CORRECCIONES Y MEJORAS RESPONSIVE ========== */
 
-        /* 1) Utilities para los colores definidos en :root (Tailwind no los genera automáticamente con la CDN) */
+        /* 1) Utilidades de color */
         .text-acid-green { color: var(--acid-green); }
         .bg-acid-green { background: var(--acid-green); }
         .border-acid-green { border-color: var(--acid-green); }
-
-        /* Clases con ":" escapadas usadas en el HTML (p.ej. hover:text-acid-green) */
         .hover\:text-acid-green:hover { color: var(--acid-green) !important; }
         .hover\:bg-acid-green:hover { background: var(--acid-green) !important; }
 
-        /* 2) Badges para .skill-tag (estabas usando la clase pero no definida) */
+        /* 2) Skill tags */
         .skill-tag {
           display: inline-block;
-          background: #111827; /* color por defecto */
+          background: #111827;
           color: #fff;
           padding: 6px 10px;
+          margin: 2px;
           font-weight: 700;
           font-size: 0.75rem;
           border-radius: 6px;
@@ -147,80 +146,207 @@
         }
         .skill-tag.bg-acid-green { background: var(--acid-green); color: #0a0a0a; }
 
-        /* 3) Mejorar legibilidad del nav en pantallas pequeñas */
+        /* 3) Navegación responsive */
         nav {
-          background: rgba(10,10,10,0.7); /* hace el nav legible sobre imágenes */
+          background: rgba(10,10,10,0.95);
           backdrop-filter: blur(6px);
         }
         @media (min-width: 1024px) {
-          /* en pantallas grandes puedes mantener el mix-blend si lo deseas */
-          nav { background: transparent; mix-blend-mode: difference; }
+          nav { 
+            background: transparent; 
+            mix-blend-mode: difference;
+            backdrop-filter: none;
+          }
         }
 
-        /* 4) Limitar tamaño del "blob" y del hero para móviles */
+        /* 4) Ajustes para móviles */
         @media (max-width: 640px) {
-          .blob { width: 220px; height: 220px; filter: blur(70px); opacity: 0.45; }
-          .hero-img { object-position: center top; }
-          h1 { font-size: 2.25rem; line-height: 1; } /* fallback para pantallas muy pequeñas */
+          .blob { 
+            width: 200px !important; 
+            height: 200px !important; 
+            filter: blur(60px) !important; 
+            opacity: 0.4 !important;
+            right: 1rem !important;
+            top: 15vh !important;
+          }
+          
+          h1 { 
+            font-size: 2.5rem !important; 
+            line-height: 0.9 !important;
+          }
+          
+          .hero-img { 
+            max-height: 300px !important;
+          }
+          
+          /* Reducir tamaño de los badges en hero */
+          .neo-brutalism.px-5 {
+            padding-left: 0.75rem !important;
+            padding-right: 0.75rem !important;
+            font-size: 0.7rem !important;
+          }
+          
+          /* Ajustar márgenes en hero */
+          section#inicio {
+            padding-top: 4rem !important;
+            min-height: auto !important;
+            padding-bottom: 3rem !important;
+          }
         }
 
-        /* 5) Evitar overflow de H1 y forzar quiebre de palabras largas */
-        h1, h1 span {
+        /* 5) Evitar overflow de textos largos */
+        h1, h1 span, h2, h3 {
           max-width: 100%;
           overflow-wrap: break-word;
           word-break: break-word;
         }
 
-        /* 6) Marquee: duplicar contenido y ajustar animación para loop suave */
-        .marquee-content { display: inline-block; white-space: nowrap; }
-        .marquee-content .marquee-block { display: inline-block; padding-right: 4rem; }
-        .marquee-content { animation: marquee 22s linear infinite; }
-        @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-100%); }
-        }
-
-        /* 7) Pequeños ajustes para project-card images en móvil */
-        .project-card img {
-          height: auto;
-          min-height: 220px;
-          object-fit: cover;
-        }
-
-        /* 8) Footer: enlaces táctiles grandes */
-        footer a[href^="mailto:"], footer a[href^="tel:"] {
-          text-decoration: none;
-          color: inherit;
-          display: inline-block;
-        }
-
-        /* 9) Revertir algunos transforms en pantallas pequeñas para evitar recortes */
+        /* 6) Mejorar marquee para móviles */
         @media (max-width: 768px) {
-          .group .hero-img { transform: none !important; scale: 1 !important; }
-          .neo-brutalism { box-shadow: 4px 4px 0px rgba(0,0,0,0.6); }
+          .marquee-content {
+            font-size: 1rem !important;
+          }
+          .marquee {
+            padding: 8px 0 !important;
+          }
         }
 
-        /* 10) Asegurar que elementos absolutos no generen overflow en pantallas pequeñas */
-        .blob { right: 2rem; top: 20vh; }
-        @media (max-width: 480px) {
-          .blob { right: 1rem; top: 18vh; opacity: 0.35; }
+        /* 7) Ajustar cards de proyectos en móviles */
+        @media (max-width: 768px) {
+          .project-card img {
+            height: 200px !important;
+            min-height: 200px !important;
+          }
+          
+          .neo-brutalism {
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.6) !important;
+          }
+          
+          /* Desactivar hover effects en móviles */
+          .neo-brutalism:hover {
+            transform: none !important;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.6) !important;
+          }
+          
+          .project-card:hover img {
+            transform: none !important;
+            filter: grayscale(1) !important;
+          }
         }
 
-        /* fin de adiciones */
+        /* 8) Footer responsive */
+        @media (max-width: 768px) {
+          footer#contacto h2 {
+            font-size: 3rem !important;
+          }
+          
+          footer#contacto p {
+            font-size: 1.25rem !important;
+          }
+          
+          /* Ajustar padding en secciones */
+          section {
+            padding-top: 3rem !important;
+            padding-bottom: 3rem !important;
+          }
+        }
+
+        /* 9) Corrección para el contenedor del blob */
+        section#inicio {
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 10) Corrección de error sintáctico en HTML (falta cerrar tag) */
+        /* En la sección de Plataformas, el h3 estaba mal cerrado: "PLATAFORMASh3>" */
+
+        /* 11) Ajustar imágenes de hero en móviles */
+        @media (max-width: 640px) {
+          .lg\\:col-span-4 .neo-brutalism {
+            width: 200px !important;
+            height: 200px !important;
+            margin: 0 auto;
+          }
+          
+          .lg\\:col-span-4 .absolute.-bottom-4.-right-4 {
+            bottom: -0.5rem !important;
+            right: -0.5rem !important;
+            width: 3rem !important;
+            height: 3rem !important;
+          }
+        }
+
+        /* 12) Asegurar que los enlaces de contacto sean táctiles */
+        footer a[href^="mailto:"], 
+        footer a[href^="tel:"], 
+        .project-card,
+        nav a {
+            min-height: 44px;
+            min-width: 44px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        /* 13) Corrección para grid en perfil/manifiesto */
+        @media (max-width: 768px) {
+          section#perfil .grid.grid-cols-2 {
+            gap: 1rem !important;
+          }
+          
+          section#perfil .neo-brutalism.p-8 {
+            padding: 1.5rem !important;
+          }
+          
+          section#perfil span.text-3xl {
+            font-size: 1.5rem !important;
+          }
+        }
+
+        /* 14) Ajustar iframe de Canva en móviles */
+        @media (max-width: 768px) {
+          section#diseno {
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+          }
+          
+          .neo-brutalism.bg-white.p-4 {
+            padding: 1rem !important;
+          }
+        }
+
     </style>
 </head>
 <body class="swiss-grid">
 
     <!-- Navegación -->
-    <nav class="fixed w-full z-50 mix-blend-difference text-white py-6 px-6 md:px-10 flex justify-between items-center">
+    <nav class="fixed w-full z-50 text-white py-4 px-4 md:px-10 flex justify-between items-center">
         <div class="text-xl md:text-2xl font-black tracking-tighter">ECT // 2026</div>
-        <div class="space-x-6 md:space-x-10 text-xs font-bold uppercase tracking-tighter flex">
-            <a href="#perfil" class="hover:text-acid-green transition">Perfil</a>
-            <a href="#proyectos" class="hover:text-acid-green transition">Proyectos</a>
-            <a href="#diseno" class="hover:text-acid-green transition">Diseño</a>
-            <a href="#contacto" class="hover:text-acid-green transition">Contacto</a>
+        <div class="space-x-4 md:space-x-10 text-xs font-bold uppercase tracking-tighter hidden md:flex">
+            <a href="#perfil" class="hover:text-acid-green transition py-2">Perfil</a>
+            <a href="#proyectos" class="hover:text-acid-green transition py-2">Proyectos</a>
+            <a href="#diseno" class="hover:text-acid-green transition py-2">Diseño</a>
+            <a href="#contacto" class="hover:text-acid-green transition py-2">Contacto</a>
+        </div>
+        <!-- Menú hamburguesa para móviles -->
+        <div class="md:hidden">
+            <button id="menuBtn" class="text-white text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
+
+    <!-- Menú móvil (oculto por defecto) -->
+    <div id="mobileMenu" class="fixed inset-0 bg-black z-40 flex flex-col justify-center items-center hidden">
+        <button id="closeMenu" class="absolute top-6 right-6 text-white text-3xl">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="space-y-8 text-center">
+            <a href="#perfil" class="block text-2xl font-bold text-white hover:text-acid-green transition">Perfil</a>
+            <a href="#proyectos" class="block text-2xl font-bold text-white hover:text-acid-green transition">Proyectos</a>
+            <a href="#diseno" class="block text-2xl font-bold text-white hover:text-acid-green transition">Diseño</a>
+            <a href="#contacto" class="block text-2xl font-bold text-white hover:text-acid-green transition">Contacto</a>
+        </div>
+    </div>
 
     <!-- Sidebar Estilo Suizo -->
     <div class="fixed left-0 top-0 h-full w-12 border-r border-black hidden lg:flex items-center justify-center bg-white/50 backdrop-blur-sm">
@@ -228,32 +354,32 @@
     </div>
 
     <!-- Hero Section -->
-    <section id="inicio" class="min-h-screen flex flex-col justify-center px-6 md:px-10 lg:px-32 relative pt-20">
+    <section id="inicio" class="pt-24 md:pt-32 pb-16 md:pb-0 flex flex-col justify-center px-4 md:px-10 lg:px-32 relative min-h-[90vh] md:min-h-screen">
         <div class="blob top-1/4 right-10"></div>
         
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-10 items-center">
             <div class="lg:col-span-8 order-2 lg:order-1">
                 <div class="y2k-badge mb-6 w-fit">ESTADO: ACTIVO_2026</div>
-                <h1 class="text-6xl md:text-6xl lg:text-6xl font-black leading-[0.9] mb-6 tracking-tighter">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-[0.9] mb-6 tracking-tighter">
                     EDILBERTO <br> <span class="text-white" style="-webkit-text-stroke: 1.5px black; text-stroke: 1.5px black;">CARMONA</span>
                 </h1>
-                <div class="flex flex-wrap gap-3 mt-10">
-                    <span class="neo-brutalism px-5 py-2 font-bold bg-white italic uppercase text-sm">Periodista Digital</span>
-                    <span class="neo-brutalism px-5 py-2 font-bold bg-[#d4ff00] uppercase text-sm tracking-tighter">Estrategia e Innovación</span>
-                    <span class="neo-brutalism px-5 py-2 font-bold bg-white uppercase text-sm">Desarrollo de productos</span>
-                    <span class="neo-brutalism px-5 py-2 font-bold bg-white uppercase text-sm">Diseño y edición</span>
+                <div class="flex flex-wrap gap-2 md:gap-3 mt-8 md:mt-10">
+                    <span class="neo-brutalism px-3 md:px-5 py-2 font-bold bg-white italic uppercase text-xs md:text-sm">Periodista Digital</span>
+                    <span class="neo-brutalism px-3 md:px-5 py-2 font-bold bg-[#d4ff00] uppercase text-xs md:text-sm tracking-tighter">Estrategia e Innovación</span>
+                    <span class="neo-brutalism px-3 md:px-5 py-2 font-bold bg-white uppercase text-xs md:text-sm">Desarrollo de productos</span>
+                    <span class="neo-brutalism px-3 md:px-5 py-2 font-bold bg-white uppercase text-xs md:text-sm">Diseño y edición</span>
                 </div>
             </div>
             
-            <div class="lg:col-span-4 order-1 lg:order-2 relative flex justify-center">
-                <div class="neo-brutalism p-2 w-64 h-64 md:w-80 md:h-80 bg-white -rotate-2 group overflow-hidden">
+            <div class="lg:col-span-4 order-1 lg:order-2 relative flex justify-center mb-10 md:mb-0">
+                <div class="neo-brutalism p-2 w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 bg-white -rotate-2 group overflow-hidden">
                     <img src="https://lh3.googleusercontent.com/d/1LY6XXHlkDWc95rB77F9-yEb9c8kn-h0Z" 
                          onerror="this.src='https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1000&auto=format&fit=crop'"
                          alt="Edilberto Carmona Tamayo" 
                          class="hero-img w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out scale-110 group-hover:scale-100">
                 </div>
-                <div class="absolute -bottom-4 -right-4 w-16 h-16 bg-blue-600 neo-brutalism flex items-center justify-center rotate-12">
-                    <i class="fas fa-bolt text-white text-2xl"></i>
+                <div class="absolute -bottom-2 -right-2 md:-bottom-4 md:-right-4 w-12 h-12 md:w-16 md:h-16 bg-blue-600 neo-brutalism flex items-center justify-center rotate-12">
+                    <i class="fas fa-bolt text-white text-xl md:text-2xl"></i>
                 </div>
             </div>
         </div>
@@ -261,33 +387,33 @@
 
     <!-- Marquee -->
     <div class="marquee">
-        <div class="marquee-content font-black text-2xl uppercase italic">
+        <div class="marquee-content font-black text-lg md:text-2xl uppercase italic">
             <span class="marquee-block">&nbsp; ESTRATEGIA DIGITAL + INNOVACIÓN + PRODUCTO WEB + INTELIGENCIA ARTIFICIAL + NARRATIVAS MULTIMEDIA +</span>
             <span class="marquee-block">&nbsp; ESTRATEGIA DIGITAL + INNOVACIÓN + PRODUCTO WEB + INTELIGENCIA ARTIFICIAL + NARRATIVAS MULTIMEDIA +</span>
         </div>
     </div>
 
     <!-- Proyectos -->
-    <section id="proyectos" class="py-24 md:py-32 bg-white px-6 md:px-10 lg:px-32 border-t-2 border-black">
-        <h2 class="text-4xl md:text-5xl font-black mb-16 tracking-tighter uppercase">01. Proyectos <br>Seleccionados</h2>
+    <section id="proyectos" class="py-16 md:py-32 bg-white px-4 md:px-10 lg:px-32 border-t-2 border-black">
+        <h2 class="text-3xl md:text-5xl font-black mb-12 md:mb-16 tracking-tighter uppercase">01. Proyectos <br>Seleccionados</h2>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             <!-- CanalUSB -->
             <a href="https://canalusb.cubadebate.cu/" target="_blank" class="project-card group block">
                 <div class="neo-brutalism overflow-hidden bg-white h-full flex flex-col">
-                    <div class="h-48 overflow-hidden border-b-2 border-black">
+                    <div class="h-48 md:h-56 overflow-hidden border-b-2 border-black">
                         <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop" alt="CanalUSB" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-6 flex-grow flex flex-col justify-between">
+                    <div class="p-4 md:p-6 flex-grow flex flex-col justify-between">
                         <div>
-                            <div class="flex justify-between items-start mb-4">
+                            <div class="flex justify-between items-start mb-3 md:mb-4">
                                 <span class="text-xs font-black uppercase tracking-widest opacity-40">/01 TECNOLOGÍA</span>
                                 <i class="fas fa-external-link-alt"></i>
                             </div>
-                            <h3 class="text-3xl font-black uppercase leading-none mb-4">CanalUSB</h3>
+                            <h3 class="text-2xl md:text-3xl font-black uppercase leading-none mb-3 md:mb-4">CanalUSB</h3>
                             <p class="text-sm text-slate-600 leading-tight">Plataforma especializada en tecnología, videojuegos y cultura digital.</p>
                         </div>
-                        <div class="mt-6 flex flex-wrap gap-2">
+                        <div class="mt-4 md:mt-6 flex flex-wrap gap-2">
                             <span class="text-[10px] font-bold bg-black text-white px-2 py-1 uppercase">Tech News</span>
                             <span class="text-[10px] font-bold bg-acid-green px-2 py-1 uppercase border border-black">Product Management</span>
                         </div>
@@ -298,19 +424,19 @@
             <!-- Cubadebate Interactivos -->
             <a href="http://interactivos.cubadebate.cu/" target="_blank" class="project-card group block">
                 <div class="neo-brutalism overflow-hidden bg-white h-full flex flex-col">
-                    <div class="h-48 overflow-hidden border-b-2 border-black">
+                    <div class="h-48 md:h-56 overflow-hidden border-b-2 border-black">
                         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" alt="Interactivos" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-6 flex-grow flex flex-col justify-between">
+                    <div class="p-4 md:p-6 flex-grow flex flex-col justify-between">
                         <div>
-                            <div class="flex justify-between items-start mb-4">
+                            <div class="flex justify-between items-start mb-3 md:mb-4">
                                 <span class="text-xs font-black uppercase tracking-widest opacity-40">/02 DATA</span>
                                 <i class="fas fa-external-link-alt"></i>
                             </div>
-                            <h3 class="text-3xl font-black uppercase leading-none mb-4">Interactivos</h3>
+                            <h3 class="text-2xl md:text-3xl font-black uppercase leading-none mb-3 md:mb-4">Interactivos</h3>
                             <p class="text-sm text-slate-600 leading-tight">Laboratorio de narrativas visuales y visualización de datos.</p>
                         </div>
-                        <div class="mt-6 flex flex-wrap gap-2">
+                        <div class="mt-4 md:mt-6 flex flex-wrap gap-2">
                             <span class="text-[10px] font-bold bg-black text-white px-2 py-1 uppercase">Data Viz</span>
                             <span class="text-[10px] font-bold bg-blue-600 text-white px-2 py-1 uppercase">UX Design</span>
                         </div>
@@ -321,19 +447,19 @@
             <!-- Cuba Joven -->
             <a href="http://cubajoven.cubadebate.cu/" target="_blank" class="project-card group block">
                 <div class="neo-brutalism overflow-hidden bg-white h-full flex flex-col">
-                    <div class="h-48 overflow-hidden border-b-2 border-black">
+                    <div class="h-48 md:h-56 overflow-hidden border-b-2 border-black">
                         <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=800&auto=format&fit=crop" alt="Cuba Joven" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-6 flex-grow flex flex-col justify-between">
+                    <div class="p-4 md:p-6 flex-grow flex flex-col justify-between">
                         <div>
-                            <div class="flex justify-between items-start mb-4">
+                            <div class="flex justify-between items-start mb-3 md:mb-4">
                                 <span class="text-xs font-black uppercase tracking-widest opacity-40">/03 SOCIAL</span>
                                 <i class="fas fa-external-link-alt"></i>
                             </div>
-                            <h3 class="text-3xl font-black uppercase leading-none mb-4">Cuba Joven</h3>
+                            <h3 class="text-2xl md:text-3xl font-black uppercase leading-none mb-3 md:mb-4">Cuba Joven</h3>
                             <p class="text-sm text-slate-600 leading-tight">Espacio dedicado a las juventudes cubanas con lenguaje visual fresco.</p>
                         </div>
-                        <div class="mt-6 flex flex-wrap gap-2">
+                        <div class="mt-4 md:mt-6 flex flex-wrap gap-2">
                             <span class="text-[10px] font-bold bg-black text-white px-2 py-1 uppercase">New Media</span>
                             <span class="text-[10px] font-bold bg-[#d4ff00] px-2 py-1 uppercase border border-black">Strategy</span>
                         </div>
@@ -344,19 +470,19 @@
             <!-- Cubadebate App -->
             <a href="https://play.google.com/store/apps/details?id=cu.avangenio.cubadebate" target="_blank" class="project-card group block">
                 <div class="neo-brutalism overflow-hidden bg-white h-full flex flex-col">
-                    <div class="h-48 overflow-hidden border-b-2 border-black">
+                    <div class="h-48 md:h-56 overflow-hidden border-b-2 border-black">
                         <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=800&auto=format&fit=crop" alt="App Android" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-6 flex-grow flex flex-col justify-between">
+                    <div class="p-4 md:p-6 flex-grow flex flex-col justify-between">
                         <div>
-                            <div class="flex justify-between items-start mb-4">
+                            <div class="flex justify-between items-start mb-3 md:mb-4">
                                 <span class="text-xs font-black uppercase tracking-widest opacity-40">/04 MOBILE</span>
                                 <i class="fas fa-mobile-alt"></i>
                             </div>
-                            <h3 class="text-3xl font-black uppercase leading-none mb-4">App Oficial</h3>
+                            <h3 class="text-2xl md:text-3xl font-black uppercase leading-none mb-3 md:mb-4">App Oficial</h3>
                             <p class="text-sm text-slate-600 leading-tight">App optimizada para consumo de noticias en baja conectividad.</p>
                         </div>
-                        <div class="mt-6 flex flex-wrap gap-2">
+                        <div class="mt-4 md:mt-6 flex flex-wrap gap-2">
                             <span class="text-[10px] font-bold bg-blue-600 text-white px-2 py-1 uppercase">Product Owner</span>
                             <span class="text-[10px] font-bold bg-black text-white px-2 py-1 uppercase">Android</span>
                             <span class="text-[10px] font-bold bg-blue-600 text-white px-2 py-1 uppercase">iOS</span>
@@ -368,10 +494,10 @@
     </section>
 
     <!-- Nueva Sección: Portafolio de Diseño (Canva) -->
-    <section id="diseno" class="py-24 md:py-32 px-6 md:px-10 lg:px-32 border-t-2 border-black bg-slate-50">
-        <div class="mb-16">
-            <h2 class="text-4xl md:text-5xl font-black tracking-tighter uppercase mb-4">02.<br>Portafolio</h2>
-            <p class="text-lg font-bold italic text-blue-600">Explora mis trabajos de diseño gráfico y editorial</p>
+    <section id="diseno" class="py-16 md:py-32 px-4 md:px-10 lg:px-32 border-t-2 border-black bg-slate-50">
+        <div class="mb-12 md:mb-16">
+            <h2 class="text-3xl md:text-5xl font-black tracking-tighter uppercase mb-4">02.<br>Portafolio</h2>
+            <p class="text-base md:text-lg font-bold italic text-blue-600">Explora mis trabajos de diseño gráfico y editorial</p>
         </div>
 
         <div class="neo-brutalism bg-white p-4 md:p-8">
@@ -380,11 +506,11 @@
                     src="https://www.canva.com/design/DAGK1ciVub8/zmV0KatkdtkRkVKh6MSlOg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
                 </iframe>
             </div>
-            <div class="mt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-sm font-black uppercase tracking-tighter italic">Portafolio Diseño Edilberto Carmona</p>
+            <div class="mt-6 md:mt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm font-black uppercase tracking-tighter italic text-center md:text-left">Portafolio Diseño Edilberto Carmona</p>
                 <a href="https://www.canva.com/design/DAGK1ciVub8/zmV0KatkdtkRkVKh6MSlOg/view?utm_content=DAGK1ciVub8&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" 
                    target="_blank" 
-                   class="neo-brutalism px-6 py-2 bg-black text-white text-xs font-bold uppercase hover:bg-white hover:text-black transition">
+                   class="neo-brutalism px-6 py-2 bg-black text-white text-xs font-bold uppercase hover:bg-white hover:text-black transition whitespace-nowrap">
                    Ver en pantalla completa <i class="fas fa-expand ml-2"></i>
                 </a>
             </div>
@@ -392,13 +518,13 @@
     </section>
     
     <!-- Nueva Sección: Habilidades & Tecnologías -->
-    <section id="habilidades" class="py-24 md:py-32 bg-white px-6 md:px-10 lg:px-32 border-t-2 border-black">
-        <h2 class="text-4xl md:text-5xl font-black mb-16 tracking-tighter uppercase">03. Software <br>& Herramientas</h2>
+    <section id="habilidades" class="py-16 md:py-32 bg-white px-4 md:px-10 lg:px-32 border-t-2 border-black">
+        <h2 class="text-3xl md:text-5xl font-black mb-12 md:mb-16 tracking-tighter uppercase">03. Software <br>& Herramientas</h2>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
             <!-- Creatividad & Video -->
             <div class="space-y-6">
-                <h3 class="text-xl font-black border-b-2 border-black pb-2 w-fit">CREATIVIDAD & VIDEO</h3>
+                <h3 class="text-lg md:text-xl font-black border-b-2 border-black pb-2 w-fit">CREATIVIDAD & VIDEO</h3>
                 <div class="flex flex-wrap gap-2">
                     <span class="skill-tag">Illustrator</span>
                     <span class="skill-tag">Premiere</span>
@@ -412,7 +538,7 @@
 
             <!-- Inteligencia Artificial -->
             <div class="space-y-6">
-                <h3 class="text-xl font-black border-b-2 border-black pb-2 w-fit">INTELIGENCIA ARTIFICIAL</h3>
+                <h3 class="text-lg md:text-xl font-black border-b-2 border-black pb-2 w-fit">INTELIGENCIA ARTIFICIAL</h3>
                 <div class="flex flex-wrap gap-2">
                     <span class="skill-tag bg-acid-green">ChatGPT</span>
                     <span class="skill-tag bg-acid-green">Claude</span>
@@ -426,7 +552,7 @@
 
             <!-- Plataformas -->
             <div class="space-y-6">
-                <h3 class="text-xl font-black border-b-2 border-black pb-2 w-fit">PLATAFORMASh3>
+                <h3 class="text-lg md:text-xl font-black border-b-2 border-black pb-2 w-fit">PLATAFORMAS</h3>
                 <div class="flex flex-wrap gap-2">
                     <span class="skill-tag">Figma</span>
                     <span class="skill-tag">Canva</span>
@@ -439,30 +565,30 @@
     </section>
 
     <!-- Perfil / Manifesto -->
-    <section id="perfil" class="py-24 md:py-32 px-6 md:px-10 lg:px-32 border-t-2 border-black">
-        <div class="grid lg:grid-cols-2 gap-16 md:gap-20 items-start">
+    <section id="perfil" class="py-16 md:py-32 px-4 md:px-10 lg:px-32 border-t-2 border-black">
+        <div class="grid lg:grid-cols-2 gap-12 md:gap-20 items-start">
             <div>
-                <h2 class="text-4xl md:text-5xl font-black mb-10 tracking-tighter uppercase"><br>Manifiesto</h2>
-                                  <p class="text-slate-600 text-lg leading-relaxed">
-                    Especializado en el liderazgo de equipos multidisciplinarios, creatividad y campañas, diseño gráfico y desarollo de productos web y multimedia.
+                <h2 class="text-3xl md:text-5xl font-black mb-8 md:mb-10 tracking-tighter uppercase"><br>Manifiesto</h2>
+                <p class="text-slate-600 text-base md:text-lg leading-relaxed">
+                    Especializado en el liderazgo de equipos multidisciplinarios, creatividad y campañas, diseño gráfico y desarrollo de productos web y multimedia.
                 </p>
             </div>
             
-            <div class="grid grid-cols-2 gap-4">
-                <div class="neo-brutalism p-8 bg-white">
-                    <span class="text-3xl md:text-3xl font-black block mb-2">10</span>
+            <div class="grid grid-cols-2 gap-3 md:gap-4">
+                <div class="neo-brutalism p-4 md:p-8 bg-white">
+                    <span class="text-2xl md:text-3xl font-black block mb-2">10</span>
                     <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">Años Experiencia</span>
                 </div>
-                <div class="neo-brutalism p-8 bg-[#d4ff00]">
-                    <span class="text-3xl md:text-3xl font-black block mb-2">INNOVACIÓN</span>
+                <div class="neo-brutalism p-4 md:p-8 bg-[#d4ff00]">
+                    <span class="text-2xl md:text-3xl font-black block mb-2">INNOVACIÓN</span>
                     <span class="text-[10px] font-black uppercase tracking-widest">Estrategia y creatividad</span>
                 </div>
-                <div class="neo-brutalism p-8 bg-blue-600 text-white">
-                    <span class="text-3xl md:text-3xl font-black block mb-2">APRENDIZAJE</span>
+                <div class="neo-brutalism p-4 md:p-8 bg-blue-600 text-white">
+                    <span class="text-2xl md:text-3xl font-black block mb-2">APRENDIZAJE</span>
                     <span class="text-[10px] font-black uppercase tracking-widest">Habilidades en uso de software</span>
                 </div>
-                <div class="neo-brutalism p-8 bg-white border-dashed">
-                    <span class="text-3xl md:text-3xl font-black block mb-2">CUBA</span>
+                <div class="neo-brutalism p-4 md:p-8 bg-white border-dashed">
+                    <span class="text-2xl md:text-3xl font-black block mb-2">CUBA</span>
                     <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">Experiencias en medios y agencias</span>
                 </div>
             </div>
@@ -470,20 +596,50 @@
     </section>
 
     <!-- Footer / Contacto -->
-    <footer id="contacto" class="bg-black text-white py-24 md:py-32 px-6 md:px-10 lg:px-32">
-        <div class="grid lg:grid-cols-2 gap-20">
+    <footer id="contacto" class="bg-black text-white py-16 md:py-32 px-4 md:px-10 lg:px-32">
+        <div class="grid lg:grid-cols-2 gap-12 md:gap-20">
             <div>
-                <h2 class="text-6xl md:text-8xl font-black tracking-tighter mb-10 uppercase italic leading-none">Hablemos</h2>
+                <h2 class="text-4xl md:text-8xl font-black tracking-tighter mb-8 md:mb-10 uppercase italic leading-none">Hablemos</h2>
                 <div class="space-y-4">
-                    <p class="text-xl md:text-3xl font-light"><a href="mailto:ectamayo13@gmail.com" class="hover:text-acid-green transition">ectamayo13@gmail.com</a></p>
-                    <p class="text-xl md:text-3xl font-light"><a href="tel:+5358602761" class="hover:text-acid-green transition">(+53) 58602761</a></p>
+                    <p class="text-xl md:text-3xl font-light"><a href="mailto:ectamayo13@gmail.com" class="hover:text-acid-green transition block py-1">ectamayo13@gmail.com</a></p>
+                    <p class="text-xl md:text-3xl font-light"><a href="tel:+5358602761" class="hover:text-acid-green transition block py-1">(+53) 58602761</a></p>
                 </div>
             </div>
-                   <div class="mt-24 pt-10 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-black uppercase tracking-[0.3em] text-zinc-500">
+        </div>
+        
+        <div class="mt-16 md:mt-24 pt-8 md:pt-10 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-black uppercase tracking-[0.3em] text-zinc-500">
             <span>Edilberto Carmona Tamayo © 2026</span>
-            <a href="#inicio" class="hover:text-white transition">Volver Arriba ↑</a>
+            <a href="#inicio" class="hover:text-white transition py-2">Volver Arriba ↑</a>
         </div>
     </footer>
+
+    <script>
+        // Menú móvil
+        document.getElementById('menuBtn').addEventListener('click', function() {
+            document.getElementById('mobileMenu').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        document.getElementById('closeMenu').addEventListener('click', function() {
+            document.getElementById('mobileMenu').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobileMenu').classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        // Desactivar hover effects en dispositivos táctiles
+        if ('ontouchstart' in window) {
+            document.querySelectorAll('.neo-brutalism').forEach(el => {
+                el.classList.add('no-hover');
+            });
+        }
+    </script>
 
 </body>
 </html>
