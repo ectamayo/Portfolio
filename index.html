@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edilberto Carmona Tamayo | Innovación & Producto</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Syne:wght@400;700;800&display=swap');
@@ -112,7 +110,6 @@
             transform: scale(1.05);
         }
 
-        /* Ajuste para el embed de Canva */
         .canva-container {
             position: relative;
             width: 100%;
@@ -122,16 +119,12 @@
             will-change: transform;
         }
 
-        /* ========== CORRECCIONES Y MEJORAS RESPONSIVE ========== */
-
-        /* 1) Utilidades de color */
         .text-acid-green { color: var(--acid-green); }
         .bg-acid-green { background: var(--acid-green); }
         .border-acid-green { border-color: var(--acid-green); }
         .hover\:text-acid-green:hover { color: var(--acid-green) !important; }
         .hover\:bg-acid-green:hover { background: var(--acid-green) !important; }
 
-        /* 2) Skill tags */
         .skill-tag {
           display: inline-block;
           background: #111827;
@@ -146,7 +139,6 @@
         }
         .skill-tag.bg-acid-green { background: var(--acid-green); color: #0a0a0a; }
 
-        /* 3) Navegación responsive */
         nav {
           background: rgba(10,10,10,0.95);
           backdrop-filter: blur(6px);
@@ -159,7 +151,6 @@
           }
         }
 
-        /* 4) Ajustes para móviles */
         @media (max-width: 640px) {
           .blob { 
             width: 200px !important; 
@@ -179,14 +170,12 @@
             max-height: 300px !important;
           }
           
-          /* Reducir tamaño de los badges en hero */
           .neo-brutalism.px-5 {
             padding-left: 0.75rem !important;
             padding-right: 0.75rem !important;
             font-size: 0.7rem !important;
           }
           
-          /* Ajustar márgenes en hero */
           section#inicio {
             padding-top: 4rem !important;
             min-height: auto !important;
@@ -194,14 +183,12 @@
           }
         }
 
-        /* 5) Evitar overflow de textos largos */
         h1, h1 span, h2, h3 {
           max-width: 100%;
           overflow-wrap: break-word;
           word-break: break-word;
         }
 
-        /* 6) Mejorar marquee para móviles */
         @media (max-width: 768px) {
           .marquee-content {
             font-size: 1rem !important;
@@ -211,7 +198,6 @@
           }
         }
 
-        /* 7) Ajustar cards de proyectos en móviles */
         @media (max-width: 768px) {
           .project-card img {
             height: 200px !important;
@@ -222,7 +208,6 @@
             box-shadow: 4px 4px 0px rgba(0,0,0,0.6) !important;
           }
           
-          /* Desactivar hover effects en móviles */
           .neo-brutalism:hover {
             transform: none !important;
             box-shadow: 4px 4px 0px rgba(0,0,0,0.6) !important;
@@ -234,7 +219,6 @@
           }
         }
 
-        /* 8) Footer responsive */
         @media (max-width: 768px) {
           footer#contacto h2 {
             font-size: 3rem !important;
@@ -244,23 +228,17 @@
             font-size: 1.25rem !important;
           }
           
-          /* Ajustar padding en secciones */
           section {
             padding-top: 3rem !important;
             padding-bottom: 3rem !important;
           }
         }
 
-        /* 9) Corrección para el contenedor del blob */
         section#inicio {
             position: relative;
             overflow: hidden;
         }
 
-        /* 10) Corrección de error sintáctico en HTML (falta cerrar tag) */
-        /* En la sección de Plataformas, el h3 estaba mal cerrado: "PLATAFORMASh3>" */
-
-        /* 11) Ajustar imágenes de hero en móviles */
         @media (max-width: 640px) {
           .lg\\:col-span-4 .neo-brutalism {
             width: 200px !important;
@@ -276,7 +254,6 @@
           }
         }
 
-        /* 12) Asegurar que los enlaces de contacto sean táctiles */
         footer a[href^="mailto:"], 
         footer a[href^="tel:"], 
         .project-card,
@@ -287,7 +264,6 @@
             align-items: center;
         }
 
-        /* 13) Corrección para grid en perfil/manifiesto */
         @media (max-width: 768px) {
           section#perfil .grid.grid-cols-2 {
             gap: 1rem !important;
@@ -302,7 +278,6 @@
           }
         }
 
-        /* 14) Ajustar iframe de Canva en móviles */
         @media (max-width: 768px) {
           section#diseno {
             padding-left: 1rem !important;
@@ -318,7 +293,6 @@
 </head>
 <body class="swiss-grid">
 
-    <!-- Navegación -->
     <nav class="fixed w-full z-50 text-white py-4 px-4 md:px-10 flex justify-between items-center">
         <div class="text-xl md:text-2xl font-black tracking-tighter">ECT // 2026</div>
         <div class="space-x-4 md:space-x-10 text-xs font-bold uppercase tracking-tighter hidden md:flex">
@@ -327,7 +301,6 @@
             <a href="#diseno" class="hover:text-acid-green transition py-2">Diseño</a>
             <a href="#contacto" class="hover:text-acid-green transition py-2">Contacto</a>
         </div>
-        <!-- Menú hamburguesa para móviles -->
         <div class="md:hidden">
             <button id="menuBtn" class="text-white text-2xl">
                 <i class="fas fa-bars"></i>
@@ -335,7 +308,6 @@
         </div>
     </nav>
 
-    <!-- Menú móvil (oculto por defecto) -->
     <div id="mobileMenu" class="fixed inset-0 bg-black z-40 flex flex-col justify-center items-center hidden">
         <button id="closeMenu" class="absolute top-6 right-6 text-white text-3xl">
             <i class="fas fa-times"></i>
@@ -348,12 +320,10 @@
         </div>
     </div>
 
-    <!-- Sidebar Estilo Suizo -->
     <div class="fixed left-0 top-0 h-full w-12 border-r border-black hidden lg:flex items-center justify-center bg-white/50 backdrop-blur-sm">
         <span class="sidebar-text uppercase font-black text-[10px] tracking-[0.3em] opacity-40">INNOVACIÓN · CREATIVIDAD · ESTRATEGIA · DISEÑO · WEB</span>
     </div>
 
-    <!-- Hero Section -->
     <section id="inicio" class="pt-24 md:pt-32 pb-16 md:pb-0 flex flex-col justify-center px-4 md:px-10 lg:px-32 relative min-h-[90vh] md:min-h-screen">
         <div class="blob top-1/4 right-10"></div>
         
@@ -385,7 +355,6 @@
         </div>
     </section>
 
-    <!-- Marquee -->
     <div class="marquee">
         <div class="marquee-content font-black text-lg md:text-2xl uppercase italic">
             <span class="marquee-block">&nbsp; ESTRATEGIA DIGITAL + INNOVACIÓN + PRODUCTO WEB + INTELIGENCIA ARTIFICIAL + NARRATIVAS MULTIMEDIA +</span>
@@ -393,12 +362,10 @@
         </div>
     </div>
 
-    <!-- Proyectos -->
     <section id="proyectos" class="py-16 md:py-32 bg-white px-4 md:px-10 lg:px-32 border-t-2 border-black">
         <h2 class="text-3xl md:text-5xl font-black mb-12 md:mb-16 tracking-tighter uppercase">01. Proyectos <br>Seleccionados</h2>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            <!-- CanalUSB -->
             <a href="https://canalusb.cubadebate.cu/" target="_blank" class="project-card group block">
                 <div class="neo-brutalism overflow-hidden bg-white h-full flex flex-col">
                     <div class="h-48 md:h-56 overflow-hidden border-b-2 border-black">
@@ -421,7 +388,6 @@
                 </div>
             </a>
 
-            <!-- Cubadebate Interactivos -->
             <a href="http://interactivos.cubadebate.cu/" target="_blank" class="project-card group block">
                 <div class="neo-brutalism overflow-hidden bg-white h-full flex flex-col">
                     <div class="h-48 md:h-56 overflow-hidden border-b-2 border-black">
@@ -444,7 +410,6 @@
                 </div>
             </a>
 
-            <!-- Cuba Joven -->
             <a href="http://cubajoven.cubadebate.cu/" target="_blank" class="project-card group block">
                 <div class="neo-brutalism overflow-hidden bg-white h-full flex flex-col">
                     <div class="h-48 md:h-56 overflow-hidden border-b-2 border-black">
@@ -467,7 +432,6 @@
                 </div>
             </a>
 
-            <!-- Cubadebate App -->
             <a href="https://play.google.com/store/apps/details?id=cu.avangenio.cubadebate" target="_blank" class="project-card group block">
                 <div class="neo-brutalism overflow-hidden bg-white h-full flex flex-col">
                     <div class="h-48 md:h-56 overflow-hidden border-b-2 border-black">
@@ -493,7 +457,6 @@
         </div>
     </section>
 
-    <!-- Nueva Sección: Portafolio de Diseño (Canva) -->
     <section id="diseno" class="py-16 md:py-32 px-4 md:px-10 lg:px-32 border-t-2 border-black bg-slate-50">
         <div class="mb-12 md:mb-16">
             <h2 class="text-3xl md:text-5xl font-black tracking-tighter uppercase mb-4">02.<br>Portafolio</h2>
@@ -517,12 +480,10 @@
         </div>
     </section>
     
-    <!-- Nueva Sección: Habilidades & Tecnologías -->
     <section id="habilidades" class="py-16 md:py-32 bg-white px-4 md:px-10 lg:px-32 border-t-2 border-black">
         <h2 class="text-3xl md:text-5xl font-black mb-12 md:mb-16 tracking-tighter uppercase">03. Software <br>& Herramientas</h2>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
-            <!-- Creatividad & Video -->
             <div class="space-y-6">
                 <h3 class="text-lg md:text-xl font-black border-b-2 border-black pb-2 w-fit">CREATIVIDAD & VIDEO</h3>
                 <div class="flex flex-wrap gap-2">
@@ -536,7 +497,6 @@
                 </div>
             </div>
 
-            <!-- Inteligencia Artificial -->
             <div class="space-y-6">
                 <h3 class="text-lg md:text-xl font-black border-b-2 border-black pb-2 w-fit">INTELIGENCIA ARTIFICIAL</h3>
                 <div class="flex flex-wrap gap-2">
@@ -550,7 +510,6 @@
                 </div>
             </div>
 
-            <!-- Plataformas -->
             <div class="space-y-6">
                 <h3 class="text-lg md:text-xl font-black border-b-2 border-black pb-2 w-fit">PLATAFORMAS</h3>
                 <div class="flex flex-wrap gap-2">
@@ -564,7 +523,6 @@
         </div>
     </section>
 
-    <!-- Perfil / Manifesto -->
     <section id="perfil" class="py-16 md:py-32 px-4 md:px-10 lg:px-32 border-t-2 border-black">
         <div class="grid lg:grid-cols-2 gap-12 md:gap-20 items-start">
             <div>
@@ -595,7 +553,6 @@
         </div>
     </section>
 
-    <!-- Footer / Contacto -->
     <footer id="contacto" class="bg-black text-white py-16 md:py-32 px-4 md:px-10 lg:px-32">
         <div class="grid lg:grid-cols-2 gap-12 md:gap-20">
             <div>
@@ -614,7 +571,6 @@
     </footer>
 
     <script>
-        // Menú móvil
         document.getElementById('menuBtn').addEventListener('click', function() {
             document.getElementById('mobileMenu').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
@@ -625,7 +581,6 @@
             document.body.style.overflow = 'auto';
         });
         
-        // Cerrar menú al hacer clic en un enlace
         document.querySelectorAll('#mobileMenu a').forEach(link => {
             link.addEventListener('click', function() {
                 document.getElementById('mobileMenu').classList.add('hidden');
@@ -633,7 +588,6 @@
             });
         });
         
-        // Desactivar hover effects en dispositivos táctiles
         if ('ontouchstart' in window) {
             document.querySelectorAll('.neo-brutalism').forEach(el => {
                 el.classList.add('no-hover');
